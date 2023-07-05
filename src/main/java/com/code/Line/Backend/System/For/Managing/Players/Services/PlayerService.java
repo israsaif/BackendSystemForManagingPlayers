@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class PlayerService {
     @Autowired
@@ -20,5 +22,10 @@ public class PlayerService {
         playerRepository.save(addPlayer);
         return new  Player();
 
+    }
+
+
+    public List<Player> getAllPlayers(){
+        return playerRepository.findAll();
     }
 }
