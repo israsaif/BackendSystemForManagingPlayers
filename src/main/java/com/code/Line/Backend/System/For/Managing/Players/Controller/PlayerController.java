@@ -20,9 +20,9 @@ public class PlayerController {
 
     @GetMapping//GetAll
     public List<Player> getPlayerInformation() {
+
         return playerService.getAllPlayers();
     }
-
     @GetMapping(path = "{id}")//GetByID
     public Player getPlayerInformation(@PathVariable(name = "id") Integer id) {
         Player playerFound = null;
