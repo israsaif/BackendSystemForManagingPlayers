@@ -18,7 +18,7 @@ public class PlayerService {
 
     public Player createPlayer(@RequestBody Player addPlayer) {
         playerRepository.save(addPlayer);
-        return new Player();
+        return new  Player();
 
     }
 }
