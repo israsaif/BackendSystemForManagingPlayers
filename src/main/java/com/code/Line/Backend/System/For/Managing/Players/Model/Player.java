@@ -5,6 +5,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Player extends BaseEntity{
     @Id
-    public Integer id;
+    public String id;
     public String name;
 }

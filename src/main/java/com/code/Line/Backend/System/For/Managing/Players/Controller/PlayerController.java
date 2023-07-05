@@ -3,6 +3,7 @@ package com.code.Line.Backend.System.For.Managing.Players.Controller;
 
 import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
 import com.code.Line.Backend.System.For.Managing.Players.Services.PlayerService;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,14 @@ public class PlayerController {
         return playerService.getAllPlayers();
     }
 
-
-
+    @GetMapping(path = "{id}")//GetByID
+    public Player getPlayerInformation(@PathVariable(name = "id") Integer id) {
+        Player playerFound = null;
+        if (id != null && id > 0) {
+            playerFound = playerService.getPlayerInformation(id);
+        }
+        return playerFound;
+    }
 
 
 }

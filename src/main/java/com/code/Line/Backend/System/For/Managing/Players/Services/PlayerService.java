@@ -7,19 +7,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class PlayerService {
     @Autowired
     private PlayerRepository playerRepository;
 
-
+    private CopyOnWriteArrayList<Player> listOfPlayers = new CopyOnWriteArrayList<>();
 
 
 
 
     public Player createPlayer(@RequestBody Player addPlayer) {
         playerRepository.save(addPlayer);
+
         return new  Player();
 
     }
@@ -27,5 +30,10 @@ public class PlayerService {
 
     public List<Player> getAllPlayers(){
         return playerRepository.findAll();
+    }
+
+    public Player getPlayerInformation(Integer id) {
+        return playerRepository.findById(id)
+                .orElse(null);
     }
 }
