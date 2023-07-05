@@ -4,9 +4,7 @@ import com.code.Line.Backend.System.For.Managing.Players.Repositories.PlayerRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
-
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
@@ -28,7 +26,7 @@ public class PlayerService {
 
 
     public List<Player> getAllPlayers(){
-        return playerRepository.findAll();
+        return playerRepository.getAllPlayers();
     }
 
     public Player getPlayerInformation(Integer id) {
