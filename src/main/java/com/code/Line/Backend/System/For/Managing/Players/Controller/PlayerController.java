@@ -20,9 +20,10 @@ public class PlayerController {
 
     @GetMapping//GetAll
     public List<Player> getPlayerInformation() {
-
         return playerService.getAllPlayers();
     }
+
+
     @GetMapping(path = "{id}")//GetByID
     public Player getPlayerId(@PathVariable(name = "id") Integer id) {
         Player playerFound = null;
@@ -32,11 +33,8 @@ public class PlayerController {
         return playerFound;
     }
 
-
     @PutMapping(path = "{id}")
-    public Player updatePlayerInformation(@PathVariable(name="id") Integer id, @RequestBody Player incomingupdatePlayer){
-
-        return playerService.updatePlayerInformation(id,incomingupdatePlayer);
-    }
-
+    public Player updatePlayerInformation(@PathVariable(name = "id") Integer id, @RequestBody Player incomingUpdatePlayer) {
+    return playerService.updatePlayerInformation(id, incomingUpdatePlayer);
+}
 }

@@ -34,10 +34,10 @@ public class PlayerService {
         return playerRepository.findById(id)
                 .orElse(null);
     }
-    public Player updatePlayerInformation(@PathVariable(name="id") Integer incomingId, @RequestBody Player incomingupdatePlayer) {
-        Player currentPlayer = getPlayerInformation(incomingId);
-        currentPlayer.name = incomingupdatePlayer.name;
-        return  playerRepository.save(currentPlayer);
-    }
 
+public Player updatePlayerInformation(@PathVariable(name = "id") Integer incomingId, @RequestBody Player incomingUpdatePlayer) {
+    Player currentPlayer = getPlayerInformation(incomingId);
+    currentPlayer.setName(incomingUpdatePlayer.getName());
+    return playerRepository.save(currentPlayer);
+}
 }
