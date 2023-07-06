@@ -1,6 +1,7 @@
 package com.code.Line.Backend.System.For.Managing.Players.ResponseObject;
 
 import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
+import com.code.Line.Backend.System.For.Managing.Players.RequestObject.PlayerRequestObject;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -26,15 +27,17 @@ public class PlayerResponseObject {
 
                 .build();
     }
-     public static List<PlayerResponseObject> specialRequestListToResponse(List<Player> playerRequest){
-        List<PlayerResponseObject> specialRequestListToResponse = new ArrayList<>();
-        if (!playerRequest.isEmpty()){
-            for (Player playerRequest : playerRequest){
-                specialRequestListToResponse.add(specialRequestToResponse)(playerRequest);
-            }
-        }
-        return specialRequestListToResponse();
+
+     public static List<PlayerResponseObject> specialRequestListToResponselist(List<Player> playerRequest) {
+         List<PlayerResponseObject> specialRequestListToResponse = new ArrayList<>();
+         if (!playerRequest.isEmpty()) {
+             for (Player playerRequestList : playerRequest) {
+               specialRequestListToResponse.add(specialRequestToResponse(playerRequestList));
+             }
+         }
+         return specialRequestListToResponse;
      }
+
 
 }
 

@@ -37,7 +37,9 @@ public void createPlayer(PlayerRequestObject playerRequestObject){
         return playerRepository.getAllPlayers();
     }
 
-
+    public List<Player> getAllPlayersByCreatedDate(String createdDate) {
+        return playerRepository.getAllPlayersByCreatedDate(createdDate);
+    }
 
 
     public Player getPlayerById(Integer playerId) {

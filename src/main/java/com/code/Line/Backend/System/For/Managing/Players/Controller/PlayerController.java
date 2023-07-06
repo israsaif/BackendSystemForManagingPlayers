@@ -28,15 +28,20 @@ public class PlayerController {
     }
 
 
+    @GetMapping//GetAll
+    public List<PlayerResponseObject> getAllPlayers() {
+        List<Player> listOfPlayers = playerService.getAllPlayers();
+        List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
+        return playerResponseList;
 
+    }
 
+    @GetMapping(value = "getAllPlayerByCreatedDate")//getAllPlayersByCreatedDate
+    public List<PlayerResponseObject> getAllPlayersByCreatedDate(@RequestParam String createdDate) {
+        List<Player> listOfPlayers = playerService.getAllPlayersByCreatedDate(createdDate);
+       List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
+        return playerResponseList;
 
+    }
 
-
-
-//    @PutMapping(path = "{id}")
-//    public Player updatePlayerInformation( @RequestBody PlayerRequestObject playerRequestObject) {
-//    return playerService.updatePlayerInformation(playerRequestObject);
-//}
-//}
 }
