@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @Data
@@ -23,5 +26,15 @@ public class PlayerResponseObject {
 
                 .build();
     }
+     public static List<PlayerResponseObject> specialRequestListToResponse(List<Player> playerRequest){
+        List<PlayerResponseObject> specialRequestListToResponse = new ArrayList<>();
+        if (!playerRequest.isEmpty()){
+            for (Player playerRequest : playerRequest){
+                specialRequestListToResponse.add(specialRequestToResponse)(playerRequest);
+            }
+        }
+        return specialRequestListToResponse();
+     }
+
 }
 

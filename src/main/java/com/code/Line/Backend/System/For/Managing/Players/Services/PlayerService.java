@@ -37,10 +37,7 @@ public void createPlayer(PlayerRequestObject playerRequestObject){
         return playerRepository.getAllPlayers();
     }
 
-//    public Player getPlayerInformation(Integer id) {
-//        return playerRepository.findById(id)
-//                .orElse(null);
-//    }
+
 
 
     public Player getPlayerById(Integer playerId) {
