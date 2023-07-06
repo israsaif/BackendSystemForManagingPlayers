@@ -40,11 +40,15 @@ public void createPlayer(PlayerRequestObject playerRequestObject){
     public List<Player> getAllPlayersByCreatedDate(String createdDate) {
         return playerRepository.getAllPlayersByCreatedDate(createdDate);
     }
+    public List<Player> getAllActiveCustomers() {
+        return playerRepository.getAllActivePlayers();
+    }
 
 
     public Player getPlayerById(Integer playerId) {
     return playerRepository.getPlayerById(playerId);
 }
+
 
 //public Player updatePlayerInformation(PlayerRequestObject playerRequestObject) {
 //        Player player = playerRepository.findById(playerRequestObject.getId());

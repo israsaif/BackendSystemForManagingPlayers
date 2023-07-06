@@ -44,4 +44,14 @@ public class PlayerController {
 
     }
 
+    @GetMapping(value = "getAllActivePlayers")
+    public List<PlayerResponseObject> getAllActivePlayers(){
+        List<Player> listOfPlayers = playerService.getAllActiveCustomers();
+        List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
+        return playerResponseList;
+    }
+
+
+
+
 }

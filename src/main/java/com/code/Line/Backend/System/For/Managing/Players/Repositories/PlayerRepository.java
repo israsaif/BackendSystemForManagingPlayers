@@ -21,4 +21,7 @@ public interface PlayerRepository extends JpaRepository<Player,Integer> {
    List<Player> getAllPlayersByCreatedDate(@Param("createdDate") String createdDate);
 
 
+   @Query("select p from Customer p where p.isActive = 1")
+   List<Player> getAllActivePlayers();
+
 }
