@@ -10,18 +10,11 @@ import java.util.Optional;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<Player,Integer> {
-   @Query(value = "select pla from Player pla")
-   List<Player> getAllPlayers();
-
-
-   @Query(value = "select pla from Player pla where pla.id = :playerId")
-   Player getPlayerById(@Param("playerId") Integer playerId);
-
-   @Query(value = "select * from Player where created_Date Like concat (?1,%)", nativeQuery = true)
-   List<Player> getAllPlayersByCreatedDate(@Param("createdDate") String createdDate);
-
-
-   @Query("select p from Customer p where p.isActive = 1")
-   List<Player> getAllActivePlayers();
-
+//   @Query(value = "select pla from Player pla")
+//   List<Player> getAllPlayers();
+//
+//
+//   @Query(value = "select pla from Player pla where pla.id = :playerId")
+//   Optional<Player> findById(@Param("playerId") Integer playerId);
+//}
 }

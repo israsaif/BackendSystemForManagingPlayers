@@ -1,7 +1,5 @@
 package com.code.Line.Backend.System.For.Managing.Players.Controller;
 import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
-import com.code.Line.Backend.System.For.Managing.Players.RequestObject.PlayerRequestObject;
-import com.code.Line.Backend.System.For.Managing.Players.ResponseObject.PlayerResponseObject;
 import com.code.Line.Backend.System.For.Managing.Players.Services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,41 +15,24 @@ public class PlayerController {
 
 
     @PostMapping//create
-    public void createPlayer(@RequestBody PlayerRequestObject playerRequestObject){
-        playerService.createPlayer(playerRequestObject);
+    public Player createPlayer(@RequestBody Player addPlayer) {
+        return playerService.createPlayer(addPlayer);
     }
-    @GetMapping(path = "{id}")//GetByID
-    public PlayerResponseObject getPlayerById(@RequestParam Integer playerId) {
-        Player player = playerService.getPlayerById(playerId);
-        PlayerResponseObject playerResponse = PlayerResponseObject.specialRequestToResponse(player);
-        return playerResponse;
-    }
-
-
     @GetMapping//GetAll
-    public List<PlayerResponseObject> getAllPlayers() {
-        List<Player> listOfPlayers = playerService.getAllPlayers();
-        List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
-        return playerResponseList;
-
+    public List<Player> getPlayerInformation() {
+        return playerService.getAllPlayers();
     }
 
-    @GetMapping(value = "getAllPlayerByCreatedDate")//getAllPlayersByCreatedDate
-    public List<PlayerResponseObject> getAllPlayersByCreatedDate(@RequestParam String createdDate) {
-        List<Player> listOfPlayers = playerService.getAllPlayersByCreatedDate(createdDate);
-       List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
-        return playerResponseList;
-
+    @GetMapping(path = "{id}")//GetByID
+    public Player getPlayerInformation(@PathVariable(name = "id") Integer id) {
+        Player playerFound = null;
+        if (id != null && id > 0) {
+            playerFound = playerService.getPlayerInformation(id);
+        }
+        return playerFound;
     }
-
-    @GetMapping(value = "getAllActivePlayers")
-    public List<PlayerResponseObject> getAllActivePlayers(){
-        List<Player> listOfPlayers = playerService.getAllActiveCustomers();
-        List<PlayerResponseObject> playerResponseList = PlayerResponseObject.specialRequestListToResponselist(listOfPlayers);
-        return playerResponseList;
-    }
-
-
-
-
+//    @PostMapping
+//    public Player updatePlayerInformation(@PathVariable(name = "id") Integer id, @RequestBody Player incomingUpdatePlayer) {
+//        return playerService.updatePlayerInformation(id, incomingUpdatePlayer);
+//    }
 }
