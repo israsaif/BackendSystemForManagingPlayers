@@ -39,4 +39,10 @@ public class PlayerService {
         currentPlayer.setName(incomingUpdatePlayer.getName());
         return playerRepository.save(currentPlayer);
     }
+    public Player deletePlayer(@PathVariable(name = "id")Integer id){
+        Player currentPlayer = getPlayerInformation(id);
+        playerRepository.delete(currentPlayer);
+        return currentPlayer;
+
+    }
 }

@@ -31,8 +31,14 @@ public class PlayerController {
         }
         return playerFound;
     }
-//    @PostMapping
-//    public Player updatePlayerInformation(@PathVariable(name = "id") Integer id, @RequestBody Player incomingUpdatePlayer) {
-//        return playerService.updatePlayerInformation(id, incomingUpdatePlayer);
-//    }
+  @PutMapping
+   public Player updatePlayerInformation(@PathVariable(name = "id") Integer id, @RequestBody Player incomingUpdatePlayer) {
+        return playerService.updatePlayerInformation(id, incomingUpdatePlayer);
+    }
+    @DeleteMapping(path = "{id}")
+    public Player deletePlayer(@PathVariable(name = "id")Integer id){
+        return playerService.deletePlayer(id);
+    }
 }
+
+
