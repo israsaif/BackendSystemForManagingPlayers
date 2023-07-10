@@ -4,6 +4,7 @@ import com.code.Line.Backend.System.For.Managing.Players.Repositories.ScoreRepos
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
@@ -14,12 +15,14 @@ public class ScoreService {
     private CopyOnWriteArrayList<Score> listOfScores = new CopyOnWriteArrayList<>();
 
 
-    
+
     public Score createScore(Score addScore){
         addScore.setId(addScore.id);
         addScore.setScoreValue(addScore.scoreValue);
         return scoreRepository.save(addScore);
     }
-
+    public List<Score> getAllScores(){
+        return scoreRepository.findAll();
+    }
 
 }
