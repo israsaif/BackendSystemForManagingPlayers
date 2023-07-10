@@ -3,13 +3,12 @@ package com.code.Line.Backend.System.For.Managing.Players.Controller;
 import com.code.Line.Backend.System.For.Managing.Players.Model.Score;
 import com.code.Line.Backend.System.For.Managing.Players.Services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/Score")
+@RequestMapping(value = "api/v2/Score")
 public class ScoreController {
     @Autowired
     ScoreService scoreService;
@@ -17,5 +16,8 @@ public class ScoreController {
     public Score  createScore (@RequestBody Score addScore){
         return scoreService.createScore(addScore);
     }
-
+//    @GetMapping//GetAll
+//    public List<Score> getScoreInformation(){
+//        return scoreService.
+//    }
 }
