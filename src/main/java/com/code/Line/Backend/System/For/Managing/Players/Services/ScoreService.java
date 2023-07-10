@@ -42,5 +42,10 @@ public class ScoreService {
         currentScore.setScoreValue(updateScore.getScoreValue());
        return scoreRepository.save(currentScore);
    }
+    public Score deleteScore(@PathVariable(name = "id")Integer id){
+        Score currentScore = getScoreInformation(id);
+        scoreRepository.delete(currentScore);
+        return currentScore;
 
+    }
 }

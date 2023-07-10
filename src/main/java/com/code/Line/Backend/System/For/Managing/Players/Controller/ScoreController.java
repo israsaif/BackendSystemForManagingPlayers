@@ -1,5 +1,4 @@
 package com.code.Line.Backend.System.For.Managing.Players.Controller;
-import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
 import com.code.Line.Backend.System.For.Managing.Players.Model.Score;
 import com.code.Line.Backend.System.For.Managing.Players.Services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +31,8 @@ public class ScoreController {
     public Score updateScoreInformation(@PathVariable(name = "id") Integer id, @RequestBody Score updateScore) {
         return scoreService.updateScoreInformation(id, updateScore);
     }
-
+    @DeleteMapping(path = "{id}")
+    public Score deleteScore(@PathVariable(name = "id")Integer id){
+        return scoreService.deleteScore(id);
+    }
 }
