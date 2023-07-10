@@ -16,6 +16,5 @@ public class Score {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     public Integer id;
-    public Integer playerId;
     public Integer scoreValue;
 }
