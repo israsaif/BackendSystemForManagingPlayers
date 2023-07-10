@@ -1,6 +1,5 @@
 package com.code.Line.Backend.System.For.Managing.Players.RequestObject;
 import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
-import com.code.Line.Backend.System.For.Managing.Players.ResponseObject.PlayerResponseObject;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
