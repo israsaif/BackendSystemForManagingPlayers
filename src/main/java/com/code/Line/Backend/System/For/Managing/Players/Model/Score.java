@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Data
 @Entity
-public class Score {
+public class Score extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     public Integer id;

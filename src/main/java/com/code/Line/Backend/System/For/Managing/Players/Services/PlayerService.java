@@ -22,7 +22,8 @@ public class PlayerService {
     private CopyOnWriteArrayList<Player> listOfPlayers = new CopyOnWriteArrayList<>();
 
     public Player createPlayer( Player addPlayer) {
-        addPlayer.setCreatedDate(new Date());
+        addPlayer.setId(addPlayer.id);
+        addPlayer.setName(addPlayer.name);
         return playerRepository.save(addPlayer);
 
     }
