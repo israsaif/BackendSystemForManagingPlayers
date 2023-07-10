@@ -1,9 +1,6 @@
 package com.code.Line.Backend.System.For.Managing.Players.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,4 +14,8 @@ public class Score extends BaseEntity {
     @Id
     public Integer id;
     public Integer scoreValue;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id", nullable = false)
+    public Player player;
 }

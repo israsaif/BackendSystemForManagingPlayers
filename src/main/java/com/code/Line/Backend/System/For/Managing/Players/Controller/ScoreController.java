@@ -18,4 +18,6 @@ public class ScoreController {
     public List<Score> getScoreInformation(){
         return scoreService.getAllScores();
     }
+
+
 }

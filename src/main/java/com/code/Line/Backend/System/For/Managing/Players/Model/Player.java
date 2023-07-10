@@ -17,5 +17,7 @@ public class Player extends BaseEntity{
     public Integer id;
     public String name;
 
+    public  String rank;
+
 
 }
