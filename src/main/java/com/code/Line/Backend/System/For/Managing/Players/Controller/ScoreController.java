@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v2/Score")
+@RequestMapping(value = "api/v1/Score")
 public class ScoreController {
     @Autowired
     ScoreService scoreService;
@@ -17,7 +17,7 @@ public class ScoreController {
     @GetMapping//GetAll
     public List<Score> getScoreInformation(){
         return scoreService.getAllScores();
-    }
+     }
     @GetMapping(path = "{id}")//GetByID
     public Score getScoreInformation(@PathVariable(name = "id")Integer id){
         Score ScoreFound = null;
