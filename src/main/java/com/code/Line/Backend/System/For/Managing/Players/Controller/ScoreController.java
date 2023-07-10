@@ -18,6 +18,15 @@ public class ScoreController {
     public List<Score> getScoreInformation(){
         return scoreService.getAllScores();
     }
+    @GetMapping(path = "{id}")//GetByID
+    public Score getScoreInformation(@PathVariable(name = "id")Integer id){
+        Score ScoreFound = null;
+        if (id != null && id > 0) {
+            ScoreFound = scoreService.getScoreInformation(id);
+        }
+        return ScoreFound;
+    }
+
 
 
 }

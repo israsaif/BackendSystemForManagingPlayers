@@ -24,5 +24,8 @@ public class ScoreService {
     public List<Score> getAllScores(){
         return scoreRepository.findAll();
     }
-
+public Score getScoreInformation(Integer id){
+        return scoreRepository.findById(id)
+                .orElse(null);
+}
 }
