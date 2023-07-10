@@ -39,6 +39,10 @@ public class PlayerController {
     public Player deletePlayer(@PathVariable(name = "id")Integer id){
         return playerService.deletePlayer(id);
     }
+    @GetMapping("/{averageScore}/rank")
+    public String fixRank(@PathVariable double averageScore) {
+        return playerService.fixRank(averageScore);
+    }
 }
 
 

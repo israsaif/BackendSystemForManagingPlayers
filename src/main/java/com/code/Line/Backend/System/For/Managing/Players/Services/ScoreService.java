@@ -1,4 +1,5 @@
 package com.code.Line.Backend.System.For.Managing.Players.Services;
+import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
 import com.code.Line.Backend.System.For.Managing.Players.Model.Score;
 import com.code.Line.Backend.System.For.Managing.Players.Repositories.PlayerRepository;
 import com.code.Line.Backend.System.For.Managing.Players.Repositories.ScoreRepository;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
@@ -47,5 +50,30 @@ public class ScoreService {
         scoreRepository.delete(currentScore);
         return currentScore;
 
+    }
+    public double calculateAverageScore(Long playerId) {
+        Player player = playerRepository.findById(playerId);
+
+        if (player == null) {
+            return 0.0; // Return 0 if no scores found for the player
+        }
+
+        int sum = 0;
+        for (Score score : player.getScores()) {
+            sum += score.getScoreValue();
+        }
+
+        return (double) sum / player.getScores().size();
+    }
+
+    public Map<Long, Double> calculateAverageScoreForAllPlayers(List<Long> playerIds){
+        Map<Long, Double> avgScoreMap = new HashMap<>();
+        for (Long playerId : playerIds) {
+            Double avgScoreOfPlayer = calculateAverageScore(playerId);
+            avgScoreMap.put(playerId, avgScoreOfPlayer.doubleValue());
+
+
+        }
+        return avgScoreMap;
     }
 }
