@@ -1,9 +1,13 @@
 package com.code.Line.Backend.System.For.Managing.Players.RequestObject;
+
 import com.code.Line.Backend.System.For.Managing.Players.Model.Score;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -24,6 +28,15 @@ public class ScoreRequestObject {
     }
 
 
+    public static List<Score> special(List<ScoreRequestObject> requestList){
+        List<Score> scores = new ArrayList<>();
+        if (!requestList.isEmpty()) {
+            for (ScoreRequestObject scoreRequest : requestList){
+                scores.add(special(scoreRequest));
+            }
+        }
+        return scores;
+    }
 
 
 
