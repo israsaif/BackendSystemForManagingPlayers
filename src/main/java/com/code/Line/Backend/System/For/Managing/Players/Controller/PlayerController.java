@@ -16,7 +16,13 @@ public class PlayerController {
 
     @PostMapping("create")//create
     public Player createPlayer(@RequestBody Player addPlayer) {
-        return playerService.createPlayer(addPlayer);
+        try{
+            return playerService.createPlayer(addPlayer);
+        }
+        catch(Exception e){
+            System.out.println("...");
+        }
+        return null;
     }
     @GetMapping("All")//GetAll
     public List<Player> getPlayerInformation() {

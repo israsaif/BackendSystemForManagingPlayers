@@ -1,5 +1,4 @@
 package com.code.Line.Backend.System.For.Managing.Players.Model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +12,7 @@ import java.util.List;
 @Getter
 @Data
 @Entity
-public class Team  extends BaseEntity{
+public class Team  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     public String teamName;
