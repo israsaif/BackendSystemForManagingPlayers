@@ -15,7 +15,7 @@ public class ScoreController {
     public Score  createScore (@RequestBody Score addScore){
         return scoreService.createScore(addScore);
     }
-    @GetMapping//GetAll
+    @GetMapping("All")//GetAll
     public List<Score> getScoreInformation(){
         return scoreService.getAllScores();
      }

@@ -14,11 +14,11 @@ public class PlayerController {
     PlayerService playerService;
 
 
-    @PostMapping//create
+    @PostMapping("create")//create
     public Player createPlayer(@RequestBody Player addPlayer) {
         return playerService.createPlayer(addPlayer);
     }
-    @GetMapping//GetAll
+    @GetMapping("All")//GetAll
     public List<Player> getPlayerInformation() {
         return playerService.getAllPlayers();
     }
