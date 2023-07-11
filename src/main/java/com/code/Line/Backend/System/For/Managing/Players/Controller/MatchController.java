@@ -1,6 +1,5 @@
 package com.code.Line.Backend.System.For.Managing.Players.Controller;
-
-import com.code.Line.Backend.System.For.Managing.Players.Model.Player;
+import com.code.Line.Backend.System.For.Managing.Players.Services.MatchmakerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,28 +11,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/matches")
 public class MatchController {
-    @PostMapping
-    public ResponseEntity<String> createMatch(@RequestBody List<String> playerIds) {
-        if (playerIds.size() != 6) {
-            return ResponseEntity.badRequest().body("Please provide exactly six player IDs.");
-        }
+    private MatchmakerService matchmakerService;
 
-        // Retrieve players from the database or any other source based on the IDs
-        List<Player> players = getPlayerList(playerIds);
-
-        // Divide the players into two teams
-        List<Player> team1 = players.subList(0, 3);
-        List<Player> team2 = players.subList(3, 6);
-
-        // Calculate the average scores for both teams
-        double averageScoreTeam1 = calculateAverageScore(team1);
-        double averageScoreTeam2 = calculateAverageScore(team2);
-
-        // Check if the match is valid
-        if (Math.abs(averageScoreTeam1 - averageScoreTeam2) < 5) {
+    @PostMapping("/validate")
+    public ResponseEntity<String> validateMatch(@RequestBody List<String> playerIds) {
+        boolean isValid = matchmakerService.isMatchValid(playerIds);
+        if (isValid) {
             return ResponseEntity.ok("Match is valid.");
         } else {
-            return ResponseEntity.ok("Match is not valid.");
+            return ResponseEntity.badRequest().body("Match is not valid.");
         }
     }
 }

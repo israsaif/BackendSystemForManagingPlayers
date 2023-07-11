@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1/Player")
+@RequestMapping(value = "/api/v1/player")
 public class PlayerController {
 
     @Autowired
     PlayerService playerService;
 
 
-    @PostMapping("create")//create
+    @PostMapping
     public Player createPlayer(@RequestBody Player addPlayer) {
         try{
             return playerService.createPlayer(addPlayer);
@@ -24,7 +24,7 @@ public class PlayerController {
         }
         return null;
     }
-    @GetMapping("All")//GetAll
+    @GetMapping
     public List<Player> getPlayerInformation() {
         return playerService.getAllPlayers();
     }
