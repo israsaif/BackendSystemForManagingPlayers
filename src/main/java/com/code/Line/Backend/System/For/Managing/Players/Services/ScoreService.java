@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +50,8 @@ public class ScoreService {
         return currentScore;
 
     }
-    public double calculateAverageScore(Long playerId) {
-        Player player = playerRepository.findById(playerId);
+    public double calculateAverageScore(Integer player_id) {
+        Player player = playerRepository.findById(player_id).get();
 
         if (player == null) {
             return 0.0; // Return 0 if no scores found for the player
@@ -66,9 +65,9 @@ public class ScoreService {
         return (double) sum / player.getScores().size();
     }
 
-    public Map<Long, Double> calculateAverageScoreForAllPlayers(List<Long> playerIds){
-        Map<Long, Double> avgScoreMap = new HashMap<>();
-        for (Long playerId : playerIds) {
+    public Map<Integer, Double> calculateAverageScoreForAllPlayers(List<Integer> playerIds){
+        Map<Integer, Double> avgScoreMap = new HashMap<>();
+        for (Integer playerId : playerIds) {
             Double avgScoreOfPlayer = calculateAverageScore(playerId);
             avgScoreMap.put(playerId, avgScoreOfPlayer.doubleValue());
 
